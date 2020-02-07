@@ -3,7 +3,7 @@
     <li *ngFor="let item of list " class="border border-dark border-bottom-0
        border-left-0 border-right-0 p-1 " > 
       <span class="lead text-uppercase"> {{ item.title}} </span>  <br>
-       {{item.body | date:'mm:ss' }} 
+      {{item.time | date:'shortTime'}}  {{item.body }} 
     </li>
   </ul>
 </div>
