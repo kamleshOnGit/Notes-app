@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NotedataService } from '../notedata.service';
+import { Observable } from 'rxjs' ;
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import { Note } from '../models/data.model';
+
 
 @Component({
   selector: 'app-note-list',
@@ -7,15 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoteListComponent implements OnInit {
 
-  list = [
-    {title: 'Just adding note' ,  body: 'Trying to add some note' , time : new Date().setTime(34352335)} ,
-    {title: 'Study angular' ,  body: 'Study angular' , time :new Date().setTime(797335)} ,
-    {title: 'Revise angular' ,  body: 'Revise angualr thoroghly' , time : new Date().setTime(5454335)}
-  ] ;
+  newnote: Observable<Note[]>;
+  
+  showtime;
+  giventime;
+  constructor(private store: Store<AppState> , private noteservice: NotedataService) {
+    this.newnote = store.select('Notes');
+  }
 
-  todayDate: Date = new Date();
-
-  constructor() { }
+  removeNote(item) {
+    this.noteservice.removeNote(item);
+  }
 
   ngOnInit() {
   }
