@@ -1,6 +1,6 @@
 <div class="w-100 mt-3 notes">
   <ul class="list-unstyled ">
-    <li *ngFor=" let item of newnote | async let i = index" (click)="removeNote(i)" class="border border-dark border-bottom-0
+    <li *ngFor=" let item of newnote | async | filter:searchtext let i = index" (click)="removeedit( item ,i)" class="border border-dark border-bottom-0
        border-left-0 border-right-0 p-1 " > 
       <span class="lead text-uppercase">  {{item.body }}  </span>  <br>
       {{item.Composetime | showtime :item }}  {{item.body }} 

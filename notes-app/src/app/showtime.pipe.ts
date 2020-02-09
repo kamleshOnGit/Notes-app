@@ -22,7 +22,7 @@ export class ShowtimePipe implements PipeTransform {
         showtime = `${new Date().getHours()}:${new Date().getMinutes()} ${abbr} `;
    } else {
         showtime =  weekday[todayDate.getDay()]; }
-    console.log(value);
+
     return showtime;
   }
 

@@ -8,7 +8,9 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './action/note.reducer';
 import { ShowtimePipe } from './showtime.pipe';
+import { SearchPipe } from './search.pipe';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,17 @@ import { ShowtimePipe } from './showtime.pipe';
     ContolheaderComponent,
     NoteListComponent,
     NoteEditComponent,
-    ShowtimePipe
+    ShowtimePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     StoreModule.forRoot({
       Notes : reducer
-    })
+    }),
+
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,25 +13,37 @@ import { NotedataService} from '../notedata.service';
 export class NoteEditComponent implements OnInit {
   sendbody: string;
   notebody;
+  edititemindex: number;
   constructor(private store: Store<AppState> , private noteservice: NotedataService) {}
   time = new Date();
 
   sendBody(value: string) {
 
     const composetime =  { time: `${this.time.getHours()}:${this.time.getMinutes()}` , date : this.time.getDate()}  ;
-    const id = this.time.getDate();
+    // const id = this.time.getMilliseconds();
     const notedata = {
-      Id: id,
       Body: value,
       Composetime: composetime
     };
-    if (value !== '') {
+    const notedata2 = {
+      body: value,
+      Composetime: composetime
+    };
+
+    if (value !== '' && !this.edititemindex) {
       this.noteservice.bodychanged(notedata) ;
     }
-    console.log(value , composetime );
+    if (this.edititemindex) {
+      this.store.dispatch(new NoteActions.EditNote( notedata2 , this.edititemindex));
+      window.localStorage.setItem('notes' , JSON.stringify( this.store.select('Notes')) );
+    }
+
   }
 
   ngOnInit() {
+
+    this.noteservice.editnotemethod$.subscribe(val => this.notebody = val.body );
+    this.noteservice.editnoteindexmethod$.subscribe( val => this.edititemindex = val);
   }
 
 }
