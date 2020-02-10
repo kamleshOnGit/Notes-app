@@ -18,10 +18,9 @@ export class ShowtimePipe implements PipeTransform {
     }
     if ( todayDate.getDate() === value.date) {
         showtime = `${value.time} ${abbr}` ;
-   } else if ( value === `${new Date().getHours()}:${new Date().getMinutes()} `  ) {
-        showtime = `${new Date().getHours()}:${new Date().getMinutes()} ${abbr} `;
-   } else {
-        showtime =  weekday[todayDate.getDay()]; }
+   } else if ( todayDate.getDate() !== value.date ) {
+        showtime = ` ${weekday[todayDate.getDay()]} ${new Date().getHours()}:${new Date().getMinutes()} ${abbr} `;
+   }
 
     return showtime;
   }

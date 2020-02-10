@@ -5,7 +5,7 @@ import * as NoteAction from './note.action';
 
 // Section 1
 const initialState: Note = {
-    body: 'No Additional text',
+    body: 'New Note . No Additional text',
     Composetime: `${new Date().getHours()}:${new Date().getMinutes()} `
 };
 
