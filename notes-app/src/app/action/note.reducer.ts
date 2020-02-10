@@ -17,22 +17,22 @@ export function reducer(state: Note[] = [initialState], action: NoteAction.Actio
     // Section 3
     switch (action.type) {
         case NoteAction.ADD_NOTE:
-            window.localStorage.setItem('notes' , JSON.stringify(state) );
             return [
                 ...state,
                 action.payload
             ];
         case NoteAction.UPDATE_NOTE:
-            return [
-                ...state,
-                action.payload
-            ];
-        case NoteAction.REMOVE_NOTE:
             window.localStorage.setItem('notes' , JSON.stringify(state) );
+            console.log(state);
+            return  state;
+
+        case NoteAction.SET_NOTE:
+            return [  ...action.payload] ;
+
+        case NoteAction.REMOVE_NOTE:
             state.splice(action.payload, 1);
             return state;
         case NoteAction.EDIT_NOTE:
-            window.localStorage.setItem('notes' , JSON.stringify(state) );
             state.splice(action.payloadindex, 1, action.payload);
             console.log( action.payload , action.payloadindex , state);
             return state;

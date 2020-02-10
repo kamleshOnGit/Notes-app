@@ -5,17 +5,17 @@ import {Store} from '@ngrx/store';
 import {AppState} from '../app.state';
 import {Note} from '../models/data.model';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import * as NoteActions from '../action/note.action';
+
 
 @Component({selector: 'app-note-list', templateUrl: './note-list.component.html', styleUrls: ['./note-list.component.css']})
 export class NoteListComponent implements OnInit {
 
   newnote: Observable < Note[] >;
   searchtext: string;
-  showtime;
-  giventime;
+
   constructor(private store: Store < AppState >, private noteservice: NotedataService) {
     this.newnote = store.select('Notes');
-
   }
 
   removeedit(item , index) {

@@ -35,7 +35,7 @@ export class NoteEditComponent implements OnInit {
     }
     if (this.edititemindex) {
       this.store.dispatch(new NoteActions.EditNote( notedata2 , this.edititemindex));
-      window.localStorage.setItem('notes' , JSON.stringify( this.store.select('Notes')) );
+      this.store.dispatch(new NoteActions.UpdateNote());
     }
 
   }

@@ -6,6 +6,7 @@ export const ADD_NOTE = '[Note] Add';
 export const REMOVE_NOTE = '[Note] Remove';
 export const EDIT_NOTE = '[Note] Edit';
 export const UPDATE_NOTE = '[Note] Update';
+export const SET_NOTE = '[any] Set';
 
 export class AddNote implements Action {
     readonly type = ADD_NOTE;
@@ -13,10 +14,16 @@ export class AddNote implements Action {
     constructor(public payload: Note) {}
 }
 
+export class SetNote implements Action {
+    readonly type = SET_NOTE;
+
+    constructor(public payload: any) {}
+}
+
 export class UpdateNote implements Action {
     readonly type = UPDATE_NOTE;
 
-    constructor(public payload: Note) {}
+    // constructor(public payload: Note) {}
 }
 
 export class RemoveNote implements Action {
@@ -32,4 +39,4 @@ export class EditNote implements Action {
 }
 
 
-export type Actions = AddNote | RemoveNote | EditNote | UpdateNote ;
+export type Actions = AddNote | RemoveNote | EditNote | UpdateNote | SetNote;
