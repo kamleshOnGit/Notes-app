@@ -14,6 +14,7 @@ export class NoteListComponent implements OnInit {
   newnote: Observable < Note[] >;
   searchtext: string;
   collapse = true;
+  active = false;
   constructor(private store: Store < AppState >, private noteservice: NotedataService) {
     this.newnote = store.select('Notes');
   }
@@ -23,6 +24,7 @@ export class NoteListComponent implements OnInit {
       .noteservice
       .removeNote(index);
     this.noteservice.editNote(item , index);
+    this.active = !this.active;
 
   }
   collapsebtn() {

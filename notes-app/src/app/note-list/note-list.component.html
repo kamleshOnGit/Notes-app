@@ -9,7 +9,7 @@
     </svg>
     <span class="clearfix"></span> </li>
     <li *ngFor=" let item of newnote | async | filter:searchtext let i = index" (click)="removeedit( item ,i)" class="border border-dark border-bottom-0
-       border-left-0 border-right-0 p-1 " > 
+       border-left-0 border-right-0 p-1 "  > 
       <span class="text-uppercase font-weight-bold">  {{item.body | title}}  </span>  <br>
       <span class="clearfix"></span>
       <span class="float-left  bodytext" >  <span class="inline float-left pr-2 time font-italic"> {{item.Composetime | showtime :item }} </span>  {{item.body | title:'bodytext' }}  </span> 
