@@ -38,4 +38,8 @@ export class NotedataService {
    this.searchText.next(text);
  }
 
+ clearview(text: any) {
+  this.editnote.next(text);
+ }
+
 }

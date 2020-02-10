@@ -22,7 +22,7 @@ export class NoteEditComponent implements OnInit {
     const composetime =  { time: `${this.time.getHours()}:${this.time.getMinutes()}` , date : this.time.getDate()}  ;
     // const id = this.time.getMilliseconds();
     const notedata = {
-      Body: value,
+      body: value,
       Composetime: composetime
     };
     const notedata2 = {

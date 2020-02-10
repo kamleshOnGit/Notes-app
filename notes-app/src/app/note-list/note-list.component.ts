@@ -13,7 +13,7 @@ export class NoteListComponent implements OnInit {
 
   newnote: Observable < Note[] >;
   searchtext: string;
-
+  collapse = true;
   constructor(private store: Store < AppState >, private noteservice: NotedataService) {
     this.newnote = store.select('Notes');
   }
@@ -25,7 +25,9 @@ export class NoteListComponent implements OnInit {
     this.noteservice.editNote(item , index);
 
   }
-
+  collapsebtn() {
+    this.collapse = !this.collapse;
+  }
   ngOnInit() {
     this.noteservice.searchmeathod$.subscribe(val => this.searchtext = val);
   }

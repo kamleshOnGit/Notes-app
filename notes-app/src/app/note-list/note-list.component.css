@@ -1,2 +1,9 @@
-.notes ul li:first-child { border:none!important}
- 
+.notes ul li:nth-child(2) { border:none!important}
+.bodytext { width:90% ; word-wrap: break-word;}
+ @media ( max-width:600px) {
+    .notes ul li span { font-size:1em}
+    .notes ul li { font-size:.8em; overflow: hidden;}
+    .time{ width:auto;}
+    .bodytext { width:100% ; word-wrap: break-word;}
+    .collapseable .bodytext { display :none}
+ }

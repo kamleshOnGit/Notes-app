@@ -11,6 +11,7 @@ import { ShowtimePipe } from './showtime.pipe';
 import { SearchPipe } from './search.pipe';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TitlePipe } from './title.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NoteListComponent,
     NoteEditComponent,
     ShowtimePipe,
-    SearchPipe
+    SearchPipe,
+    TitlePipe
   ],
   imports: [
     BrowserModule,

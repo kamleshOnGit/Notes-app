@@ -17,55 +17,59 @@ export class ContolheaderComponent implements OnInit {
       .store
       .pipe(select('Notes'));
 
-    if (window.localStorage.getItem('notes')) {
+    if (JSON.parse(window.localStorage.getItem('notes'))) {
       const data: any = JSON.parse(window.localStorage.getItem('notes'));
       this
         .store
         .dispatch(new NoteActions.SetNote(data));
+      console.log(data);
     }
- }
-
-    addNote(data) {
-      if (data !== '') {
-        this
-          .store
-          .dispatch(new NoteActions.AddNote({body: data.Body, Composetime: data.Composetime}));
-      }
-      this.localstorage();
-    }
-
-    removeNote(id) {
-      if (typeof id !== 'undefined') {
-        this
-          .store
-          .dispatch(new NoteActions.RemoveNote(id));
-      }
-      this.localstorage();
-    }
-
-    searchText(text : string) {
-      this
-        .noteservice
-        .searchtext(text);
-    }
-
-    localstorage() {
-      setTimeout(() => {
-        this
-          .store
-          .dispatch(new NoteActions.UpdateNote());
-      }, 1000);
-    }
-
-    ngOnInit() {
-      this
-        .noteservice
-        .bodymethod$
-        .subscribe(val => this.notedata = val);
-      this
-        .noteservice
-        .notremovemethod$
-        .subscribe(val => this.notetoremove = val);
-    }
-
   }
+
+  addNote(data) {
+    if (data !== '') {
+      this
+        .store
+        .dispatch(new NoteActions.AddNote({body: data.body, Composetime: data.Composetime}));
+    }
+    this.localstorage();
+  }
+
+  removeNote(id) {
+    if (typeof id !== 'undefined') {
+      this
+        .store
+        .dispatch(new NoteActions.RemoveNote(id));
+    }
+    this.localstorage();
+    this
+      .noteservice
+      .clearview('');
+  }
+
+  searchText(text : string) {
+    this
+      .noteservice
+      .searchtext(text);
+  }
+
+  localstorage() {
+    setTimeout(() => {
+      this
+        .store
+        .dispatch(new NoteActions.UpdateNote());
+    }, 1000);
+  }
+
+  ngOnInit() {
+    this
+      .noteservice
+      .bodymethod$
+      .subscribe(val => this.notedata = val);
+    this
+      .noteservice
+      .notremovemethod$
+      .subscribe(val => this.notetoremove = val);
+  }
+
+}
